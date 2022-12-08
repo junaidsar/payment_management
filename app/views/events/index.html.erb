@@ -1,0 +1,31 @@
+<h1>Events</h1>
+
+<table id="Events">
+  <thead>
+    <tr>
+      <th>Event Name</th>
+      <th>Eventable Type</th>
+      <th>Eventable</th>
+      <th>Transition</th>
+      <th>Metadata</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  <% @events.each do |event| %>
+    <tr>
+      <td><%= event.name %></td>
+      <td><%= event.eventable_type %></td>
+      <td>
+        <% if event.eventable_type == "Applicant" %>
+          <%= link_to "Eventable", applicant_path(event.eventable), target: "_blank" %>
+        <% else %>
+          <%= event.eventable_id %>
+        <% end %>
+      </td>
+      <td><%= event.transition %></td>
+      <td><%= event.metadata %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

@@ -33,6 +33,7 @@ class ApplicantsController < ApplicationController
 
   # PATCH/PUT /applicants/1
   def update
+    @applicant.metadata = {status_comment: params[:applicant][:status_comment]} if params[:applicant][:status_comment].present?
     if @applicant.update(applicant_params)
       redirect_to @applicant, notice: 'Applicant was successfully updated.'
     else
