@@ -35,6 +35,7 @@ RSpec.describe 'payments/index.html.erb' do
   end
 
   before do
+    assign(:projects, [project, project2])
     Applicant.create!(
       name: 'Applicant 1',
       overview: 'Overview',
