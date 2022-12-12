@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_02_112308) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_06_144842) do
   create_table "applicants", force: :cascade do |t|
     t.string "name"
     t.text "overview"
@@ -21,6 +21,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_02_112308) do
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_applicants_on_name", unique: true
     t.index ["project_id"], name: "index_applicants_on_project_id"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.integer "eventable_id", null: false
+    t.string "eventable_type", null: false
+    t.string "name", null: false
+    t.json "transition", null: false
+    t.json "metadata"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["eventable_id"], name: "index_events_on_eventable_id"
+    t.index ["eventable_type"], name: "index_events_on_eventable_type"
+    t.index ["metadata"], name: "index_events_on_metadata"
+    t.index ["name"], name: "index_events_on_name"
+    t.index ["transition"], name: "index_events_on_transition"
   end
 
   create_table "funds", force: :cascade do |t|

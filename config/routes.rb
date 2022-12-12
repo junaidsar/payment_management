@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :funds
   resources :payments, only: [:index]
   resources :projects
+  resources :events, only: [:index]
 
   root 'applicants#index'
 end
